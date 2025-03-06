@@ -1,8 +1,9 @@
 <template>
-  <div class="page">
-    <div v-for="item in nodeList" class="render-item">
+  <div :class="`page-${ props.length }`">
+    <h1>Total: {{ props.length }}</h1>
+    <div v-for="index in props.length" class="render-item">
       <h4>
-        {{ item.name }}
+        {{ index }}: node content
       </h4>
       <span>node</span>
       <span>node</span>
@@ -25,10 +26,6 @@ const props = defineProps({
     default: 10000,
   }
 })
-const nodeList = Array.from({ length: props.length }).map((_, index) => ({
-  id: index + 1,
-  name: `${index + 1}: node content`
-}))
 </script>
 
 <style>
@@ -39,5 +36,4 @@ const nodeList = Array.from({ length: props.length }).map((_, index) => ({
 .render-item span {
   padding: 0 4px;
 }
-
 </style>
